@@ -77,5 +77,29 @@ public class WebElementsTest {
 		assertFalse(listRadio.get(1).isSelected());
 		assertFalse(listRadio.get(3).isSelected());		
 	}
+	
+	@Test
+	public void testValidaCheckBoxes() {
+		List<WebElement> listCheck = driver.findElements(By.name("chkbox"));
+		
+		//validar o tamanho da lista
+		assertEquals(4, listCheck.size());
+		
+		for (WebElement check : listCheck) {
+			//System.out.println(check.getDomProperty("value"));
+			
+			// Operador lógico ou (||)
+			if ((check.getDomProperty("value").equals("Check 3")) 
+					|| (check.getDomProperty("value").equals("Check 4"))) {
+				check.click();
+			}		
+		}
+		
+		assertTrue(listCheck.get(2).isSelected());
+		assertTrue(listCheck.get(3).isSelected());
+		assertFalse(listCheck.get(0).isSelected());
+		assertFalse(listCheck.get(1).isSelected());
+		
+	}
 
 }
