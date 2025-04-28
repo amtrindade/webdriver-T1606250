@@ -11,6 +11,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.Select;
 
 public class WebElementsTest {
 	
@@ -30,7 +31,7 @@ public class WebElementsTest {
 
 	@AfterEach
 	public void tearDown() throws Exception {
-		driver.quit();
+		//driver.quit();
 	}
 
 	@Test
@@ -100,6 +101,21 @@ public class WebElementsTest {
 		assertFalse(listCheck.get(0).isSelected());
 		assertFalse(listCheck.get(1).isSelected());
 		
+	}
+	
+	@Test
+	public void testValidaDropDownSingle() throws InterruptedException {
+		WebElement dropSingle = driver.findElement(By.name("dropdownlist"));		
+		Select selectDropSingle = new Select(dropSingle);
+		
+		selectDropSingle.selectByIndex(0);
+		Thread.sleep(3000);
+		selectDropSingle.selectByValue("item9");
+		Thread.sleep(3000);
+		selectDropSingle.selectByVisibleText("Item 7");
+		
+		assertEquals("Item 7", selectDropSingle.getFirstSelectedOption().getText());
+				
 	}
 
 }
