@@ -7,6 +7,7 @@ import java.util.List;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -31,7 +32,7 @@ public class WebElementsTest {
 
 	@AfterEach
 	public void tearDown() throws Exception {
-		//driver.quit();
+		driver.quit();
 	}
 
 	@Test
@@ -151,6 +152,26 @@ public class WebElementsTest {
 		
 		//retorna para o contexto default
 		driver.switchTo().defaultContent();
+	}
+	
+	@Test
+	public void testValidaAlerts() {
+		WebElement btnAlert = driver.findElement(By.name("alertbtn"));
+		btnAlert.click();
+		
+		Alert alert = driver.switchTo().alert();
+		assertEquals("Eu sou um alerta!", alert.getText());
+		
+		alert.accept();
+		
+		WebElement btnConfirm = driver.findElement(By.name("confirmbtn"));
+		btnConfirm.click();
+		
+		Alert confirm = driver.switchTo().alert();
+		assertEquals("Pressione um botão!", confirm.getText());
+		
+		confirm.dismiss();	
+		
 	}
 	
 
