@@ -174,5 +174,25 @@ public class WebElementsTest {
 		
 	}
 	
+	@Test
+	public void testFluxoAlerts() {
+		WebElement btnPrompt = driver.findElement(By.id("promptBtn"));
+		btnPrompt.click();
+		
+		Alert alertDigiteAno = driver.switchTo().alert();
+		alertDigiteAno.sendKeys("2024");
+		alertDigiteAno.accept();
+		
+		Alert alertValidaAno = driver.switchTo().alert();
+		
+		assertEquals("O ano é 2025?", alertValidaAno.getText());
+		alertValidaAno.accept();
+		
+		Alert alertFeito = driver.switchTo().alert();
+		
+		assertEquals("Feito!", alertFeito.getText());
+		alertFeito.accept();
+	}
+	
 
 }
