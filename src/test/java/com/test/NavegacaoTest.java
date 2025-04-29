@@ -12,7 +12,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
-public class NavegacaoMultiplasTabsTest {
+public class NavegacaoTest {
 	
 	private WebDriver driver;
 
@@ -51,6 +51,36 @@ public class NavegacaoMultiplasTabsTest {
 		
 		driver.switchTo().window(tabs.get(0));
 		assertEquals("Treino Automação de Testes", driver.getTitle());			
+		
+	}
+	
+	@Test
+	public void testNavegacaoAcoesBrowser() {
+		assertEquals("Treino Automação de Testes", driver.getTitle());
+		
+		WebElement linkCalculadora = driver.findElement(By.linkText("Calculadora"));
+		linkCalculadora.click();
+		
+		assertEquals("Desafio Automação Cálculos", driver.getTitle());
+		
+		WebElement linkTable = driver.findElement(By.linkText("Localizar Table"));
+		linkTable.click();
+		
+		assertEquals("Trabalhando com tables", driver.getTitle());
+		
+		//Navegacao a partir do cash criado
+		driver.navigate().back();
+		assertEquals("Desafio Automação Cálculos", driver.getTitle());
+		
+		driver.navigate().back();
+		assertEquals("Treino Automação de Testes", driver.getTitle());
+		
+		driver.navigate().forward();
+		assertEquals("Desafio Automação Cálculos", driver.getTitle());
+		
+		driver.navigate().forward();
+		assertEquals("Trabalhando com tables", driver.getTitle());
+		
 		
 	}
 
