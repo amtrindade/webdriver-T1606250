@@ -136,8 +136,21 @@ public class WebElementsTest {
 		//Valida quais
 		assertEquals("Item 5", listSelected.get(0).getText());
 		assertEquals("Item 8", listSelected.get(1).getText());
-		assertEquals("Item 9", listSelected.get(2).getText());
+		assertEquals("Item 9", listSelected.get(2).getText());		
+	}
+	
+	@Test
+	public void testValidaIFrame() {
+		//entra no iframe
+		driver.switchTo().frame(0);
 		
+		WebElement tfIframe = driver.findElement(By.id("tfiframe"));
+		tfIframe.sendKeys("Automação de teste");
+		
+		assertEquals("Automação de teste", tfIframe.getDomProperty("value"));
+		
+		//retorna para o contexto default
+		driver.switchTo().defaultContent();
 	}
 	
 
