@@ -109,6 +109,7 @@ public class WebElementsTest {
 		Select selectDropSingle = new Select(dropSingle);
 		
 		selectDropSingle.selectByIndex(0);
+		//Sleep para travar o tempo em 3s //Não é uma boa prática
 		Thread.sleep(3000);
 		selectDropSingle.selectByValue("item9");
 		Thread.sleep(3000);
@@ -117,5 +118,27 @@ public class WebElementsTest {
 		assertEquals("Item 7", selectDropSingle.getFirstSelectedOption().getText());
 				
 	}
+	
+	@Test
+	public void testValidaDropDownMultiple() {
+		WebElement dropMulti = driver.findElement(By.name("multiselectdropdown"));
+		Select selectDropMulti = new Select(dropMulti);
+		
+		selectDropMulti.selectByVisibleText("Item 5");
+		selectDropMulti.selectByVisibleText("Item 8");
+		selectDropMulti.selectByVisibleText("Item 9");
+		
+		List<WebElement> listSelected = selectDropMulti.getAllSelectedOptions();
+		
+		//Valida quantos
+		assertEquals(3, listSelected.size());
+		
+		//Valida quais
+		assertEquals("Item 5", listSelected.get(0).getText());
+		assertEquals("Item 8", listSelected.get(1).getText());
+		assertEquals("Item 9", listSelected.get(2).getText());
+		
+	}
+	
 
 }
