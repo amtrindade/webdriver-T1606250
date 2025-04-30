@@ -59,7 +59,7 @@ public class ExpressaoRegularTest {
 		System.out.println(numeroCpf);
 		
 		assertTrue(numeroCpf.matches("^[0-9]{11}$"));		
-		
+						
 	}
 
 
