@@ -38,7 +38,7 @@ public class WebElementsTest {
 	@Test
 	public void testEscreveHelloWorld() {		
 		//1. Localizar um elemento na tela
-		WebElement textFieldEnable = driver.findElement(By.name("txtbox1"));
+		WebElement textFieldEnable = driver.findElement(By.xpath("//*[@name='txtbox1']"));
 		
 		//2. Interagir com o elemento
 		textFieldEnable.sendKeys("Hello World!!!");
