@@ -2,6 +2,7 @@ package com.test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.time.Duration;
 
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,6 +20,9 @@ public class ExpressaoRegularCNPJTest {
 	public void setUp() throws Exception {
 		System.setProperty("webdriver.chrome.driver", "/Users/umov.me/Dev/drivers/chromedriver");
 		driver = new ChromeDriver();
+		
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+		
 		driver.get("https://toolshub.com.br/gerador-cnpj-filial");
 	}
 
