@@ -1,85 +1,73 @@
 package com.test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static com.core.DriverFactory.getDriver;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import java.util.ArrayList;
 
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
 
-public class NavegacaoTest {
+import com.core.BaseTest;;
+
+public class NavegacaoTest extends BaseTest {
 	
-	private WebDriver driver;
-
 	@BeforeEach
 	public void setUp() throws Exception {
-		System.setProperty("webdriver.chrome.driver", "/Users/umov.me/Dev/drivers/chromedriver");
-		
-		driver = new ChromeDriver();
-		driver.get("https://antoniotrindade.com.br/treinoautomacao");
-	}
-
-	@AfterEach
-	public void tearDown() throws Exception {
-		driver.quit();
+		getDriver().get("https://antoniotrindade.com.br/treinoautomacao");
 	}
 
 	@Test
 	public void testNavegacaoTabs() throws InterruptedException {
-		assertEquals("Treino Automação de Testes", driver.getTitle());
+		assertEquals("Treino Automação de Testes", getDriver().getTitle());
 		
-		WebElement linkGeradorCpf = driver.findElement(By.linkText("Gerador de CPF"));
+		WebElement linkGeradorCpf = getDriver().findElement(By.linkText("Gerador de CPF"));
 		linkGeradorCpf.click();
-		Thread.sleep(3000);
 		
-		WebElement linkDragAndDrop = driver.findElement(By.linkText("Drag and Drop"));
+		WebElement linkDragAndDrop = getDriver().findElement(By.linkText("Drag and Drop"));
 		linkDragAndDrop.click();
-		Thread.sleep(3000);
 		
-		ArrayList<String> tabs = new ArrayList<String>(driver.getWindowHandles());
+		ArrayList<String> tabs = new ArrayList<String>(getDriver().getWindowHandles());
 		
-		driver.switchTo().window(tabs.get(2));
-		assertEquals("Gerador de CPF", driver.getTitle());
+		getDriver().switchTo().window(tabs.get(2));
+		assertEquals("Gerador de CPF", getDriver().getTitle());
 		
-		driver.switchTo().window(tabs.get(1));
-		assertEquals("Mootools Drag and Drop Example", driver.getTitle());
+		getDriver().switchTo().window(tabs.get(1));
+		assertEquals("Mootools Drag and Drop Example", getDriver().getTitle());
 		
-		driver.switchTo().window(tabs.get(0));
-		assertEquals("Treino Automação de Testes", driver.getTitle());			
+		getDriver().switchTo().window(tabs.get(0));
+		assertEquals("Treino Automação de Testes", getDriver().getTitle());			
 		
 	}
 	
 	@Test
 	public void testNavegacaoAcoesBrowser() {
-		assertEquals("Treino Automação de Testes", driver.getTitle());
+		assertEquals("Treino Automação de Testes", getDriver().getTitle());
 		
-		WebElement linkCalculadora = driver.findElement(By.linkText("Calculadora"));
+		WebElement linkCalculadora = getDriver().findElement(By.linkText("Calculadora"));
 		linkCalculadora.click();
 		
-		assertEquals("Desafio Automação Cálculos", driver.getTitle());
+		assertEquals("Desafio Automação Cálculos", getDriver().getTitle());
 		
-		WebElement linkTable = driver.findElement(By.linkText("Localizar Table"));
+		WebElement linkTable = getDriver().findElement(By.linkText("Localizar Table"));
 		linkTable.click();
 		
-		assertEquals("Trabalhando com tables", driver.getTitle());
+		assertEquals("Trabalhando com tables", getDriver().getTitle());
 		
 		//Navegacao a partir do cash criado
-		driver.navigate().back();
-		assertEquals("Desafio Automação Cálculos", driver.getTitle());
+		getDriver().navigate().back();
+		assertEquals("Desafio Automação Cálculos", getDriver().getTitle());
 		
-		driver.navigate().back();
-		assertEquals("Treino Automação de Testes", driver.getTitle());
+		getDriver().navigate().back();
+		assertEquals("Treino Automação de Testes", getDriver().getTitle());
 		
-		driver.navigate().forward();
-		assertEquals("Desafio Automação Cálculos", driver.getTitle());
+		getDriver().navigate().forward();
+		assertEquals("Desafio Automação Cálculos", getDriver().getTitle());
 		
-		driver.navigate().forward();
-		assertEquals("Trabalhando com tables", driver.getTitle());
+		getDriver().navigate().forward();
+		assertEquals("Trabalhando com tables", getDriver().getTitle());
 		
 		
 	}

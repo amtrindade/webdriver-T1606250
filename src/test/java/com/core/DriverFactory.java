@@ -27,8 +27,9 @@ public class DriverFactory {
 		return driver;
 	}
 	
-	public static void killDriver() {
+	public static void killDriver() {	
 		driver.quit();
+		driver = null;		
 	}
 
 }
