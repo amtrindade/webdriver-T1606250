@@ -46,4 +46,8 @@ Certifique-se de ter os seguintes itens instalados em sua máquina:
 - **Erro de versão do Java:** Verifique se o Java JDK 11+ está instalado e configurado no `PATH`.
 - **Dependências não resolvidas:** Execute `mvn clean install` novamente.
 
+### Aquitetura Page Objects
+
+![alt text](image.png)
+
 
