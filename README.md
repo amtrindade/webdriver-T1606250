@@ -48,6 +48,6 @@ Certifique-se de ter os seguintes itens instalados em sua máquina:
 
 ### Aquitetura Page Objects
 
-![alt text](image.png)
+![Page Objects](image.png)
 
 
