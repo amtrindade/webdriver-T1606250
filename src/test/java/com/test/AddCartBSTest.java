@@ -18,10 +18,8 @@ public class AddCartBSTest extends BaseTest{
 	public void setUp() throws Exception  {
 		loginPage = new LoginBSPage();		
 		loginPage.openSite("https://sahitest.com/demo/training/login.htm");
-		
-		loginPage.sendUser("test");
-		loginPage.sendPassword("secret");		
-		mainPage = loginPage.clickLogginValid();
+				
+		mainPage = loginPage.login("test", "secret");
 	}
 	
 	@Test

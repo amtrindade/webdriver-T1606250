@@ -41,5 +41,13 @@ public class LoginBSPage {
 		
 		return new MainBSPage();
 	}
+	
+	public MainBSPage login(String user, String pass) {
+		sendUser(user);
+		sendPassword(pass);
+		clickLogginValid();
+		
+		return new MainBSPage();
+	}
 
 }
